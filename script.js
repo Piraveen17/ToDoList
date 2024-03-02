@@ -1,6 +1,17 @@
 const inputBox = document.getElementById("input-box");
 const listContainer = document.getElementById("list_container");
 
+function handleChange(){
+    localStorage.setItem('userInput',inputBox.value)
+}
+inputBox.addEventListener('change',handleChange);
+window.addEventListener('load',function(){
+    const storedValue = localStorage.getItem('userInput');
+    if(storedValue){
+        inputBox.value = storedValue;
+    }
+});
+
 function addTask(){
     if(inputBox.value === ''){
         alert("Write something in the Text box...");
